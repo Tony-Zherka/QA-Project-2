@@ -1,0 +1,38 @@
+version: '3.8'
+services:
+  
+    front_end_1:
+        container_name: "front_end_1"
+        image:
+        build: ./front_end_1
+        ports:
+        - target: 5000
+          published: 5000
+          protocol: tcp
+        environment:
+            DATABASE_URI: 
+        deploy:
+            replicas: 2
+              
+    gun_gen_2:
+        container_name: "gun_gen_2"
+        image: 
+        build: ./gun_gen_2
+        deploy:
+            replicas: 2
+
+
+    perk_one_3:
+        container_name: "perk_one_3"
+        image: 
+        build: ./perk_one_3
+        deploy:
+            replicas: 2
+
+
+    perk_two_4:
+        container_name: "perk_two_4"
+        image: 
+        build: ./perk_two_4
+        deploy:
+            replicas: 2
