@@ -8,8 +8,8 @@ services:
         - target: 5000
           published: 5000
           protocol: tcp
-        # environment:
-        #     DATABASE_URI: 
+        environment:
+            DATABASE_URI: 
         # deploy:
         #     replicas: 2
               
@@ -32,3 +32,15 @@ services:
         build: ./perk_two_4
         # deploy:
         #     replicas: 2
+    
+    proxy:
+        container_name: nginx-proxy
+        image: nginx:latest
+        ports:
+        - 80:80
+        volumes:
+        - type: bind
+          source: ./nginx.conf
+          target: /etc/nginx/nginx.conf
+        depends_on:
+        - "front_end_1"

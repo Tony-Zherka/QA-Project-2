@@ -1,108 +1,56 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, Response
+
 import random
 
 app = Flask(__name__)
 
-snipers = {"perk_two":
-{0: 'increased damage against creatures', 1: 'increased damage against structures',
-2: 'increased damage against humans', 3: 'increased damaage against undead',
-4: 'increased damage against flying', 5: 'increased damage against mechanical',
-6: 'increased damage against magical', 7: 'increased damage against plants',
-8: 'increased damage against demons', 9: 'increased damage against angels',
-}}
-
-shotguns = {"perk_two":
-{0: 'increased damage against creatures', 1: 'increased damage against structures',
-2: 'increased damage against humans', 3: 'increased damaage against undead',
-4: 'increased damage against flying', 5: 'increased damage against mechanical',
-6: 'increased damage against magical', 7: 'increased damage against plants',
-8: 'increased damage against demons', 9: 'increased damage against angels',
-}}
-
-rifles = {"perk_two":
-{0: 'increased damage against creatures', 1: 'increased damage against structures',
-2: 'increased damage against humans', 3: 'increased damaage against undead',
-4: 'increased damage against flying', 5: 'increased damage against mechanical',
-6: 'increased damage against magical', 7: 'increased damage against plants',
-8: 'increased damage against demons', 9: 'increased damage against angels',
-}}
-
-pistols = {"perk_two":
-{0: 'increased damage against creatures', 1: 'increased damage against structures',
-2: 'increased damage against humans', 3: 'increased damaage against undead',
-4: 'increased damage against flying', 5: 'increased damage against mechanical',
-6: 'increased damage against magical', 7: 'increased damage against plants',
-8: 'increased damage against demons', 9: 'increased damage against angels',
-}}
-
-smgs = {"perk_two":
-{0: 'increased damage against creatures', 1: 'increased damage against structures',
-2: 'increased damage against humans', 3: 'increased damaage against undead',
-4: 'increased damage against flying', 5: 'increased damage against mechanical',
-6: 'increased damage against magical', 7: 'increased damage against plants',
-8: 'increased damage against demons', 9: 'increased damage against angels',
-}}
-
-assult_rifles = {"perk_two":
-{0: 'increased damage against creatures', 1: 'increased damage against structures',
-2: 'increased damage against humans', 3: 'increased damaage against undead',
-4: 'increased damage against flying', 5: 'increased damage against mechanical',
-6: 'increased damage against magical', 7: 'increased damage against plants',
-8: 'increased damage against demons', 9: 'increased damage against angels',
-}}
-
-lmgs = {"perk_two":
-{0: 'increased damage against creatures', 1: 'increased damage against structures',
-2: 'increased damage against humans', 3: 'increased damaage against undead',
-4: 'increased damage against flying', 5: 'increased damage against mechanical',
-6: 'increased damage against magical', 7: 'increased damage against plants',
-8: 'increased damage against demons', 9: 'increased damage against angels',
-}}
-
-rocket_launchers = {"perk_two":
-{0: 'increased damage against creatures', 1: 'increased damage against structures',
-2: 'increased damage against humans', 3: 'increased damaage against undead',
-4: 'increased damage against flying', 5: 'increased damage against mechanical',
-6: 'increased damage against magical', 7: 'increased damage against plants',
-8: 'increased damage against demons', 9: 'increased damage against angels',
-}}
+perk_two = {'increased damage against creatures', 'increased damage against structures',
+'increased damage against humans', 'increased damaage against undead',
+'increased damage against flying', 'increased damage against mechanical',
+'increased damage against magical', 'increased damage against plants',
+'increased damage against demons', 'increased damage against angels',
+}
 
 gun_effect = {'Fire Damage', 'Frost Damage', 'Poison Damage',
 'Shock Damage','Explosive Damage', 'Corrosive Damage',
 'Ammo regeneration', 'Burst', 'Transfusion Rounds',
 'Weaken Rounds'}
 
-@app.route('/get_perk2', methods=['POST', 'GET'])
+@app.route('/get_perk2', methods=['POST'])
 def get_perk2():
     gun = request.json['gun']
     perk_one = request.json['perk_one']
+    gun_effect1 = random.choice(list(gun_effect))
+    perk_two1 = random.choice(list(perk_two))
 
-    if gun == 'sniper':
-        return jsonify(random.choice(list(snipers["perk_two"].values())))
-    elif gun == 'shotgun':
-        return jsonify(random.choice(list(shotguns["perk_two"].values())))
-    elif gun == 'rifle':
-        return jsonify(random.choice(list(rifles["perk_two"].values())))
-    elif gun == 'pistol':
-        return jsonify(random.choice(list(pistols["perk_two"].values())))
-    elif gun == 'smg':
-        return jsonify(random.choice(list(smgs["perk_two"].values())))
-    elif gun == 'assult_rifle':
-        return jsonify(random.choice(list(assult_rifles["perk_two"].values())))
-    elif gun == 'lmg':
-        return jsonify(random.choice(list(lmgs["perk_two"].values())))
-    elif gun == 'rocket_launcher':
-        return jsonify(random.choice(list(rocket_launchers["perk_two"].values())))
-
+    # if gun == 'Sniper':
+    #     return jsonify(random.choice(perk_two))
+    # elif gun == 'Shotgun':
+    #     return jsonify(random.choice(perk_two))
+    # elif gun == 'Rifle':
+    #     return jsonify(random.choice(perk_two))
+    # elif gun == 'Pistol':
+    #     return jsonify(random.choice(perk_two))
+    # elif gun == 'SMG':
+    #     return jsonify(random.choice(perk_two))
+    # elif gun == 'Assault Rifle':
+    #     return jsonify(random.choice(perk_two))
+    # elif gun == 'LMG':
+    #     return jsonify(random.choice(perk_two))
+    # elif gun == 'Rocket Launcher':
+    #     return jsonify(random.choice(perk_two))
     
-    # gun_effect1 = random.choice(gun_effect)
+    
 
-    # gun_mod = {
-    #     'perk_one': perk_one,
-    #     perk_two": perk_two,
-    #     'gun_effect': gun_effect1,
-    # }
-    # return jsonify(gun_mod)
+    gun_mod = {
+        "gun": gun,
+        "perk_one": perk_one,
+        "perk_two": perk_two1,
+        "gun_effect": gun_effect1
+    }
+
+    return jsonify(gun_mod) 
+
 
 
 
