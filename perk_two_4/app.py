@@ -72,7 +72,7 @@ gun_effect = {'Fire Damage', 'Frost Damage', 'Poison Damage',
 'Ammo regeneration', 'Burst', 'Transfusion Rounds',
 'Weaken Rounds'}
 
-@app.route('/get_perk2', methods=['POST'])
+@app.route('/get_perk2', methods=['POST', 'GET'])
 def get_perk2():
     gun = request.json['gun']
     perk_one = request.json['perk_one']
@@ -93,15 +93,16 @@ def get_perk2():
         return jsonify(random.choice(list(lmgs["perk_two"].values())))
     elif gun == 'rocket_launcher':
         return jsonify(random.choice(list(rocket_launchers["perk_two"].values())))
-    
-    gun_effect1 = random.choice(gun_effect)
 
-    gun_mod = {
-        'perk_one': perk_one,
-        "perk_two": perk_two,
-        'gun_effect': gun_effect1,
-    }
-    return jsonify(gun_mod)
+    
+    # gun_effect1 = random.choice(gun_effect)
+
+    # gun_mod = {
+    #     'perk_one': perk_one,
+    #     perk_two": perk_two,
+    #     'gun_effect': gun_effect1,
+    # }
+    # return jsonify(gun_mod)
 
 
 
