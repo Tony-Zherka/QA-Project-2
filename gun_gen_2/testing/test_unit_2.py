@@ -1,7 +1,7 @@
 from flask import url_for
 from flask_testing import TestCase
 
-from gun_gen_2.app import app, gun
+from app import app, gun
 
 class Test_gun_gen_2(TestCase):
     def create_app(self):
