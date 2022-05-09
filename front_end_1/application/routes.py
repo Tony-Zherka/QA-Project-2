@@ -11,17 +11,13 @@ def home():
 
     generate = {'gun': gun, 'perk_one': perk_one}
 
-    gun_mod = requests.post('http://perk_two_4:5000/get_perk2', json=generate)
+    gun_mod = requests.post('http://perk_two_4:5000/get_perk2', json=generate).json()
 
-    return render_template('main.html', gun_mod=gun_mod.json())
+    # new_gun = gun=gun_mod['gun'], perk_one=gun_mod['perk_one'], perk_two=gun_mod['perk_two'], gun_effect=gun_mod['gun_effect']
 
+    result = f"You have created a {gun_mod['gun']} with the following perks: {gun_mod['perk_one']} and {gun_mod['perk_two']} and the gun effect of: {gun_mod['gun_effect']}"
 
+    return render_template('main.html', result=result)
 
-
-    # return render_template('main.html', generate=generate)
-
-    # Generate = f"The Gun you have generated is: {gun1['gun']} and the perk you have chosen is: {gun1['perk_one']}"
-
-    # return render_template('home.html', Generate=Generate)
 
 

@@ -23,25 +23,6 @@ def get_perk2():
     gun_effect1 = random.choice(list(gun_effect))
     perk_two1 = random.choice(list(perk_two))
 
-    # if gun == 'Sniper':
-    #     return jsonify(random.choice(perk_two))
-    # elif gun == 'Shotgun':
-    #     return jsonify(random.choice(perk_two))
-    # elif gun == 'Rifle':
-    #     return jsonify(random.choice(perk_two))
-    # elif gun == 'Pistol':
-    #     return jsonify(random.choice(perk_two))
-    # elif gun == 'SMG':
-    #     return jsonify(random.choice(perk_two))
-    # elif gun == 'Assault Rifle':
-    #     return jsonify(random.choice(perk_two))
-    # elif gun == 'LMG':
-    #     return jsonify(random.choice(perk_two))
-    # elif gun == 'Rocket Launcher':
-    #     return jsonify(random.choice(perk_two))
-    
-    
-
     gun_mod = {
         "gun": gun,
         "perk_one": perk_one,
