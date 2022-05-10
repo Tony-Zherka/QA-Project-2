@@ -1,7 +1,7 @@
 from flask import url_for
 from flask_testing import TestCase
 import requests_mock
-from application import app
+from app import app
 
 
 class TestHome(TestCase):
@@ -21,4 +21,3 @@ class TestHome(TestCase):
             m.get('http://perk_one_3:5000/get_perk1', json={'perk_one': perk_one})
             m.post('http://perk_two_4:5000/get_perk2', json={'gun': gun, 'perk_one': perk_one, 'perk_two': perk_two, 'gun_effect': gun_effect})
             response = self.client.get(url_for('home'))
-            
