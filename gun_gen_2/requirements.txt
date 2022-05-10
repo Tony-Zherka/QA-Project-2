@@ -1,13 +1,14 @@
 Flask
-Flask-SQLAlchemy
+# Flask-SQLAlchemy
 Jinja2
-SQLAlchemy
+# SQLAlchemy
 Werkzeug
 flask_wtf
 pytest
 pytest-cov
 flask-testing
-pymysql
+# pymysql
 wtforms
-selenium
+# selenium
 requests
+requests_mock
