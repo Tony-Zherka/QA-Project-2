@@ -1,8 +1,8 @@
 from flask import url_for
 from flask_testing import TestCase
 import requests_mock
-from application import app
-from application.routes import *
+from app import app
+import application.routes
 
 
 class TestHome(TestCase):
