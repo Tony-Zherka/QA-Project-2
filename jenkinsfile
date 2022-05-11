@@ -1,35 +1,37 @@
 pipeline{
     agent any
-    // environment{
-    //     DOCKERHUB_LOGIN=credentials('DOCKERHUB_LOGIN')
-    //     DATABASE_URI=credentials('DATABASE_URI')
-    // }
+    }
     stages{
         stage('Testing app'){
             steps{
                 sh "bash test.sh"
             }
         }
-        // stage('Installing dependencies'){
-        //     steps{
-        //         sh "bash scripts/dependencies.sh"
-        //     }
-        // }
-        // stage('Building containers'){
-        //     steps{
-        //         sh "docker login -u ${DOCKERHUB_LOGIN_USR} -p ${DOCKERHUB_LOGIN_PSW}"
-        //         sh "bash scripts/containers.sh"
-        //     }
-        // }
-        // stage('Running ansible tasks'){
-        //     steps{
-        //         sh "bash scripts/ansible.sh"
-        //     }
-        // }
-        // stage('Deploying'){
-        //     steps{
-        //         sh "bash scripts/deploy.sh"
-        //     }
-        // }
+        stage('build and push'){
+            environment {
+                DOCKER_UNAME = credentials('docker_uname')
+                DOCKER_PWORD = credentials('docker_pword')
+            }
+            steps {
+                sh "docker-compose build --parallel"
+                sh "docker login -u $DOCKER_UNAME -p $DOCKER_PWORD"
+                sh "docker-compose push"
+            }
+        }
+        stage('Building containers'){
+            steps{
+                
+            }
+        }
+        stage('Running ansible tasks'){
+            steps{
+                sh "bash scripts/ansible.sh"
+            }
+        }
+        stage('Deploying'){
+            steps{
+                sh "bash scripts/deploy.sh"
+            }
+        }
     }
 }
