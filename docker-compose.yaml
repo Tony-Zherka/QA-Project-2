@@ -3,13 +3,12 @@ services:
   
     front_end_1:
         container_name: "front_end_1"
-        image: docker.io/zherka/front_end:latest
+        image: docker.io/zherka/front_end_1:latest
         build: ./front_end_1
         ports:
         - target: 5000
           published: 5000
           protocol: tcp
-        environment:
         # deploy:
         #     replicas: 2
               
