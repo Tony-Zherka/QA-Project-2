@@ -2,21 +2,19 @@
   become: yes
   roles:
 
-- hosts:
-  - swarm-manager
-  - swarm-worker
+- hosts: all
   become: yes
   roles:
     - installing-docker
 
 - hosts:
-  - swarm-manager
+  - swarm_managers
   become: yes
   roles:
     - swarm-setup
 
 - hosts:
-  - swarm-worker
+  - swarm_workers
   become: yes
   roles:
     - swarm-join
