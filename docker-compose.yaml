@@ -3,18 +3,19 @@ services:
   
     front_end_1:
         container_name: "front_end_1"
+        image: docker.io/zherka/front_end:latest
         build: ./front_end_1
         ports:
         - target: 5000
           published: 5000
           protocol: tcp
         environment:
-            DATABASE_URI: 
         # deploy:
         #     replicas: 2
               
     gun_gen_2:
         container_name: "gun_gen_2"
+        image: docker.io/zherka/gun_gen_2:latest
         build: ./gun_gen_2
         # deploy:
         #     replicas: 2
@@ -22,6 +23,7 @@ services:
 
     perk_one_3:
         container_name: "perk_one_3"
+        image: docker.io/zherka/perk_one_3:latest
         build: ./perk_one_3
         # deploy:
         #     replicas: 2
@@ -29,6 +31,7 @@ services:
 
     perk_two_4:
         container_name: "perk_two_4"
+        image: docker.io/zherka/perk_two_4:latest
         build: ./perk_two_4
         # deploy:
         #     replicas: 2
