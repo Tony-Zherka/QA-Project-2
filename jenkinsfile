@@ -1,6 +1,4 @@
 pipeline{
-    agent any
-    }
     stages{
         stage('Testing app'){
             steps{
@@ -34,3 +32,4 @@ pipeline{
             }
         }
     }
+}
