@@ -34,3 +34,4 @@ pipeline {
             cobertura coberturaReportFile: 'effect-api/coverage.xml', failNoReports: false
         }
     }
+}
