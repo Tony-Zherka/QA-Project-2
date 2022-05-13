@@ -25,12 +25,13 @@ pipeline {
             }
         }
     }
-    // post {
-    //     always {
-    //         junit '**/*.xml'
-    //         cobertura coberturaReportFile: 'front-end/coverage.xml', failNoReports: false
-    //         cobertura coberturaReportFile: 'name-api/coverage.xml', failNoReports: false
-    //         cobertura coberturaReportFile: 'unit-api/coverage.xml', failNoReports: false
-    //         cobertura coberturaReportFile: 'effect-api/coverage.xml', failNoReports: false
-    //     }
+    post {
+        always {
+            junit '**/*.xml'
+            cobertura coberturaReportFile: 'front-end_1/coverage.xml', failNoReports: false
+            cobertura coberturaReportFile: 'gun_gen_2/coverage.xml', failNoReports: false
+            cobertura coberturaReportFile: 'perk_one_3/coverage.xml', failNoReports: false
+            cobertura coberturaReportFile: 'Perk_two_4/coverage.xml', failNoReports: false
+        }
     }
+}
