@@ -25,13 +25,4 @@ pipeline {
             }
         }
     }
-    post {
-        always {
-            junit '**/*.xml'
-            cobertura coberturaReportFile: 'front-end_1/coverage.xml', failNoReports: false
-            cobertura coberturaReportFile: 'gun_gen_2/coverage.xml', failNoReports: false
-            cobertura coberturaReportFile: 'perk_one_3/coverage.xml', failNoReports: false
-            cobertura coberturaReportFile: 'Perk_two_4/coverage.xml', failNoReports: false
-        }
-    }
 }
