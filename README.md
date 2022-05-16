@@ -77,5 +77,3 @@ Many thanks to Victoria Sacre for helping me to this stage to be able to complet
 ## Author
 ### Tony Zherka
 
-
-thanks for watching
